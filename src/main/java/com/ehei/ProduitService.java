@@ -62,9 +62,7 @@ public class ProduitService {
     }
 
 
-    private boolean estUnique(Produit produit) {
-        return produits.stream().noneMatch(p -> p.getId() == produit.getId() || p.getNom().equals(produit.getNom()));
-    }
+    
 
 
     private boolean estUnique(Produit produit) {
