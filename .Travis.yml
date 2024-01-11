@@ -2,4 +2,6 @@ language: java
 jdk:
   - openjdk11
 
-script: mvn test
+script:   - java --version
+  - ./mvnw clean install
+  - ./mvnw test
