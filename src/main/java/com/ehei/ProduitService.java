@@ -41,6 +41,31 @@ public class ProduitService {
             System.out.println("Produit inexistant.");
         }
     }
+    public void mettreAJourProduit(Produit PROD) {
+        if (!produits.contains(PROD)) {
+            System.out.println("Erreur : Le produit à mettre à jour n'existe pas.");
+            return;
+        }
+
+        if (!estUnique(PROD)) {
+            System.out.println("Erreur : Un autre produit avec le même ID ou nom existe déjà.");
+            return;
+        }
+
+        if (!sontDonneesValides(PROD)) {
+            System.out.println("Erreur : Le prix et la quantité du produit doivent être positifs.");
+            return;
+        }
+
+        int index = produits.indexOf(PROD);
+        produits.set(index, PROD);
+    }
+
+
+    private boolean estUnique(Produit produit) {
+        return produits.stream().noneMatch(p -> p.getId() == produit.getId() || p.getNom().equals(produit.getNom()));
+    }
+
 
     private boolean estUnique(Produit produit) {
         return produits.stream().noneMatch(p -> p.getId() == produit.getId() || p.getNom().equals(produit.getNom()));
@@ -53,6 +78,9 @@ public class ProduitService {
             return false;
         }
         return true;
+    }
+    public List<Produit> getProduits() {
+        return produits;
     }
 
 }
