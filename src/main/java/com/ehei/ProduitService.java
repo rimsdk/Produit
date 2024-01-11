@@ -33,7 +33,14 @@ public class ProduitService {
         System.out.println("Produit inexistant.");
         return null;
     }
-    
+        public void supprimerProduit(long id) {
+        Produit produitASupprimer = lireProduitParId(id);
+        if (produitASupprimer != null) {
+            produits.remove(produitASupprimer);
+        } else {
+            System.out.println("Produit inexistant.");
+        }
+    }
 
     private boolean estUnique(Produit produit) {
         return produits.stream().noneMatch(p -> p.getId() == produit.getId() || p.getNom().equals(produit.getNom()));
