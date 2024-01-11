@@ -23,6 +23,16 @@ public class ProduitService {
 
         produits.add(PROD);
     }
+
+    public Produit lireProduitParId(long id) {
+        for (Produit produit : produits) {
+            if (produit.getId() == id) {
+                return produit;
+            }
+        }
+        System.out.println("Produit inexistant.");
+        return null;
+    }
     
 
     private boolean estUnique(Produit produit) {
